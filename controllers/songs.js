@@ -8,9 +8,9 @@ const router = express.Router()
 router.post('/', async (req, res) => {
     try {
         const createdSong = await Song.create(req.body)
-        res.status(201).json(createdSong)
+        res.status(201).send(createdSong)
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        res.status(500).send({ error: error.message })
     }
 })
 
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const foundSongs = await Song.find()
-        res.status(200).json(foundSongs)
+        res.status(200).send(foundSongs)
     } catch (error) {
         res.status(500).send({error: error.message});
     }
@@ -34,9 +34,9 @@ router.get('/:songId', async (req, res) => {
       res.status(200).json(foundSong);
     } catch (error) {
       if (res.statusCode === 404) {
-        res.json({ error: error.message });
+        res.send({ error: error.message });
       } else {
-        res.status(500).json({ error: error.message });
+        res.status(500).send({ error: error.message });
       }
     }
   });
@@ -65,7 +65,7 @@ router.get('/:songId', async (req, res) => {
       res.status(200).json(updatedSong);
     } catch (error) {
       if (res.statusCode === 404) {
-        res.json({ error: error.message });
+        res.send({ error: error.message });
       } else {
         res.status(500).json({ error: error.message });
       }
