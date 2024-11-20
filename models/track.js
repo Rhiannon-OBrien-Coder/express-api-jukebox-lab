@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const songSchema = mongoose.Schema({
+const trackSchema = mongoose.Schema({
     title: {
       type: String,
       required: true,
@@ -11,5 +11,5 @@ const songSchema = mongoose.Schema({
     },
   })
   
-  const Song = mongoose.model('Song', songSchema)
-  module.exports = Song
+  const Track = mongoose.model('Track', trackSchema)
+  module.exports = Track
